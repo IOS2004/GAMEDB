@@ -35,6 +35,11 @@
             <input type="number" placeholder="Enter developer ID" name="developer_id">
             <button type="submit"> Update </button>
           </form>
+          <h1>Add Category</h1>
+          <form action="/games/<%= game.game_id %>/add_category" method="POST">
+            <input type="text" name="category_name" placeholder="Enter category name" required>
+            <button type="submit"> Add </button>
+          </form>    
           <h1> Delete game </h1>
           <form action="/games/<%= game.game_id %>/delete" method="POST">
             <button type="submit"> Delete </button>

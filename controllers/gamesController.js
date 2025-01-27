@@ -39,6 +39,17 @@ const validateGameForUpdate = [
   })
 ]
 
+const validateCategory = [
+  body("category_name").trim().isAlpha().withMessage("Category must only contain letters")
+  .custom(async (value) => {
+    let categories = await db.getCategoriesQ();
+    categories = categories.map((category) => category.name.toLowerCase())
+    if (!categories.includes(value.toLowerCase()))
+      throw new Error("Category does not exist")
+    return true;
+  }).customSanitizer((value) => (value.charAt(0).toUpperCase() + value.slice(1))),
+]
+
 async function getGames(req, res) {
   const games = await db.getGamesQ();
   res.render('games', {games : games});
@@ -60,7 +71,7 @@ createGame = [
     if (!errors.isEmpty())
     {
       const games = await db.getGamesQ();
-      res.render('games', {games : games, errors : errors.array()});
+      res.status(400).render('games', {games : games, errors : errors.array()});
       return;
     }
     await db.createGameQ(req.body.game_name, req.body.synopsis, req.body.sysreq, req.body.release_date, req.body.developer_id, req.params.game_id);
@@ -79,7 +90,7 @@ updateGame = [
     {
       const developer = await db.getDeveloperByIdQ(game.developer_id);
       const categories = await db.getCategoriesFromGameQ(game_id);
-      res.render('game', {game : game, developer : developer, categories : categories, errors : errors.array()});
+      res.status(400).render('game', {game : game, developer : developer, categories : categories, errors : errors.array()});
       return;
     }
     const game_name = (req.body.game_name) ? req.body.game_name : game.name;
@@ -88,6 +99,26 @@ updateGame = [
     const release_date = (req.body.release_date) ? req.body.release_date : game.release_date;
     const developer_id = (req.body.developer_id) ? req.body.developer_id : game.developer_id;
     await db.updateGameQ(game_name, synopsis, sysreq, release_date, developer_id, req.params.game_id);
+    res.redirect(`/games/${req.params.game_id}`);
+  })
+]
+
+addCategoryOnGame = [
+  validateCategory,
+  asyncHandler (
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty())
+    {
+      const game_id = req.params.game_id;
+      const game = await db.getGameByIdQ(game_id);  
+      const developer = await db.getDeveloperByIdQ(game.developer_id);
+      const categories = await db.getCategoriesFromGameQ(game_id);
+      res.status(400).render('game', {game : game, developer : developer, categories : categories, errors : errors.array()});
+      return;
+    }
+    const name = req.body.category_name;
+    await db.insertGameOnCategoryQ(req.params.game_id, name);
     res.redirect(`/games/${req.params.game_id}`);
   })
 ]
@@ -109,5 +140,6 @@ module.exports = {
   getGameById,
   createGame,
   updateGame,
-  deleteGame
+  deleteGame,
+  addCategoryOnGame
 }
