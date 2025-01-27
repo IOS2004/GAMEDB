@@ -8,15 +8,6 @@ const developersRouter = require('./routes/developersRouter');
 const gamesRouter = require('./routes/gamesRouter');
 const categoriesRouter = require('./routes/categoriesRouter');
 
-// TODOS
-/*
-Error handling
-Frontend
-Update
-Create 
-Delete
-*/
-
 app.use(express.urlencoded({ extended: true }));
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
