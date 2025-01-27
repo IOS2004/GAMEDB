@@ -29,8 +29,8 @@ CREATE TABLE IF NOT EXISTS game_category (
   game_id INTEGER NOT NULL, 
   category_name VARCHAR (255) NOT NULL,
   PRIMARY KEY (game_id, category_name), 
-  FOREIGN KEY (game_id) REFERENCES games (game_id) ON DELETE CASCADE,
-  FOREIGN KEY (category_name) REFERENCES category (name) ON DELETE CASCADE
+  FOREIGN KEY (game_id) REFERENCES games (game_id) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (category_name) REFERENCES category (name) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE INDEX IF NOT EXISTS idx_game_category_game_id ON game_category (game_id);  

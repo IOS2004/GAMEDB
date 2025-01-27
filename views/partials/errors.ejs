@@ -1,4 +1,8 @@
-<h2 style="color: red;">Error</h2>
-<% errors.forEach((err) => { %>
-  <h3>err.msg</h3>
-<%}) %>
+<% if (locals.errors) {%>
+  <h2 style="color: red">Error</h2>
+  <ul>
+    <% errors.forEach(function(error) { %>
+      <li><%= error.msg %></li>
+    <% }); %>
+  </ul>
+<% } %>

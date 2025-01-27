@@ -28,17 +28,18 @@
       <div class="item">
           <h1>Update game</h1>
           <form action="/games/<%= game.game_id %>/update" method="POST">
-            <input type="text" placeholder="Enter name" name="game_name" required>
-            <input type="text" placeholder="Enter synopsis" name="synopsis" required>
-            <input type="text" placeholder="Enter system requirements" name="sysreq" required>
-            <input type="date" placeholder="Enter release date" name="release_date" required>
-            <input type="number" placeholder="Enter developer ID" name="developer_id" required>
+            <input type="text" placeholder="Enter name" name="game_name">
+            <input type="text" placeholder="Enter synopsis" name="synopsis">
+            <input type="text" placeholder="Enter system requirements" name="sysreq">
+            <input type="date" placeholder="Enter release date" name="release_date">
+            <input type="number" placeholder="Enter developer ID" name="developer_id">
             <button type="submit"> Update </button>
           </form>
           <h1> Delete game </h1>
           <form action="/games/<%= game.game_id %>/delete" method="POST">
             <button type="submit"> Delete </button>
           </form>  
+          <%- include("partials/errors") %>
       </div>
   </div>
 </body>

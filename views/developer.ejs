@@ -22,19 +22,15 @@
     <div class="item">
       <h1>Update developer</h1>
       <form action="/developers/<%= developer.developer_id %>/update" method="POST">
-        <input type="text" name="developer_name" placeholder="Enter new name" required>
-        <input type="text" placeholder="Enter about developer" name="about" required>
+        <input type="text" name="developer_name" placeholder="Enter new name">
+        <input type="text" placeholder="Enter about developer" name="about">
         <button type="submit"> Update </button>
-      </form>
-      <h1> Add new game </h1>
-      <form action="/developers/<%= developer.developer_id %>/add-game" method="POST">
-        <input type="number" name="game_id" placeholder="Enter game ID" required>
-        <button type="submit"> Add </button>
       </form>
       <h1> Delete developer </h1>
       <form action="/developers/<%= developer.developer_id %>/delete" method="POST">
         <button type="submit"> Delete </button>
       </form>
+      <%- include("partials/errors") %>
     </div>
   </div>
 </body>

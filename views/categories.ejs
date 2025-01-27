@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="stylesheets/content.css">
+  <link rel="stylesheet" href="/stylesheets/content.css">
   <title>Categories</title>
 </head>
 <body>
@@ -12,7 +12,7 @@
     <h1>Categories</h1>
     <% categories.forEach((category) => { %>
       <div>
-      <a href="/categories/<%= category.name %>"> <%= category.name %> </a>
+        <a href="/categories/<%= category.name %>"> <%= category.name %> </a>
       </div>
     <% }) %>
     </div>
@@ -22,6 +22,7 @@
         <input type="text" placeholder="Enter category name" name="category_name" required>
         <button type="submit"> Add Category </button> 
       </form>
+      <%- include("partials/errors") %>
     </div>
   </div>
 </body>
