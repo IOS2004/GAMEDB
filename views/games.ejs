@@ -3,13 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="stylesheets/content.css">
   <title>Games</title>
 </head>
 <body>
-  <% games.forEach((game) => { %>
-    <div>
-      <a href="/games/<%= game.game_id %>"> <%= game.name %> </a>
+  <div class="container">
+    <div class="item">
+      <h1>Games</h1>
+      <% games.forEach((game) => { %>
+        <div>
+          <a href="/games/<%= game.game_id %>"> <%= game.name %> </a>
+        </div>
+      <% }) %>
     </div>
-  <% }) %>
+    <div class="item">
+      <h1>Add Game</h1>
+      <form action="/games/create" method="POST">
+        <input type="text" placeholder="Enter name" name="game_name" required>
+        <input type="text" placeholder="Enter synopsis" name="synopsis" required>
+        <input type="text" placeholder="Enter system requirements" name="sysreq" required>
+        <input type="date" placeholder="Enter release date" name="release_date" required>
+        <input type="number" placeholder="Enter developer ID" name="developer_id" required>
+        <button type="submit"> Add Game </button> 
+      </form>
+    </div>
+  </div>
 </body>
 </html>

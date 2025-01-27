@@ -3,13 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="stylesheets/content.css">
   <title>Developers</title>
 </head>
 <body>
-  <% developers.forEach((developer) => { %>
-    <div>
-    <a href="/developers/<%= developer.developer_id %>"> <%= developer.name %> </a>
+  <div class="container">
+    <div class="item">
+      <h1>Developers</h1>
+    <% developers.forEach((developer) => { %>
+      <div>
+      <a href="/developers/<%= developer.developer_id %>"> <%= developer.name %> </a>
+      </div>
+    <% }) %>
     </div>
-  <% }) %>
+    <div class="item">
+      <h1>Add Developer</h1>
+      <form action="/developers/create" method="POST">
+        <input type="text" placeholder="Enter developer name" name="developer_name" required>
+        <input type="text" placeholder="Enter about developer" name="about" required>
+        <button type="submit"> Add Developer </button> 
+      </form>
+    </div>
+  </div>
 </body>
 </html>

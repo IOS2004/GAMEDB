@@ -3,23 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/content.css">
   <title><%= game.name %></title>
 </head>
 <body>
-  <h1><%= game.name %></h1>
-  <h2>Synopsis</h2>
-  <h3><%= game.synopsis %></h3>
-  <h2>System Requirements</h2>
-  <h3><%= game.sysreq %></h3>
-  <h2> Release Date </h2>
-  <h3><%= game.release_date %></h3>
-  <h2>Developer</h2>
-  <h3><a href="/developers/<%= developer.developer_id %>"> <%= developer.name %> </a> </h3>
-  <h2> Categories </h2>
-  <% categories.forEach((category) => { %>
-    <div>
-    <a href="/categories/<%= category.name %>"> <%= category.name %> </a>
-    </div>
-  <% }) %>
+  <div class="container">
+      <div class="item">
+        <h1><%= game.name %></h1>
+        <h2>Synopsis</h2>
+        <h3><%= game.synopsis %></h3>
+        <h2>System Requirements</h2>
+        <h3><%= game.sysreq %></h3>
+        <h2> Release Date </h2>
+        <h3><%= game.release_date %></h3>
+        <h2>Developer</h2>
+        <h3><a href="/developers/<%= developer.developer_id %>"> <%= developer.name %> </a> </h3>
+        <h2> Categories </h2>
+        <% categories.forEach((category) => { %>
+          <div>
+          <a href="/categories/<%= category.name %>"> <%= category.name %> </a>
+          </div>
+        <% }) %>
+      </div>
+      <div class="item">
+          <h1>Update game</h1>
+          <form action="/games/<%= game.game_id %>/update" method="POST">
+            <input type="text" placeholder="Enter name" name="game_name" required>
+            <input type="text" placeholder="Enter synopsis" name="synopsis" required>
+            <input type="text" placeholder="Enter system requirements" name="sysreq" required>
+            <input type="date" placeholder="Enter release date" name="release_date" required>
+            <input type="number" placeholder="Enter developer ID" name="developer_id" required>
+            <button type="submit"> Update </button>
+          </form>
+          <h1> Delete game </h1>
+          <form action="/games/<%= game.game_id %>/delete" method="POST">
+            <button type="submit"> Delete </button>
+          </form>  
+      </div>
+  </div>
 </body>
 </html>

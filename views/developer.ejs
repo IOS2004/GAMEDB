@@ -3,17 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/content.css">
   <title><%= developer.name %></title>
 </head>
 <body>
-  <h1> <%= developer.name %> </h1>
-  <h2>About</h2>
-  <%= developer.about %>
-  <h2>Games</h2>
-  <% games.forEach((game) => { %>
-    <div>
-      <a href="/games/<%= game.game_id %>"> <%= game.name %> </a>
+  <div class="container">
+    <div class="item">
+      <h1> <%= developer.name %> </h1>
+      <h2>About</h2>
+      <%= developer.about %>
+      <h2>Games</h2>
+      <% games.forEach((game) => { %>
+        <div>
+          <a href="/games/<%= game.game_id %>"> <%= game.name %> </a>
+        </div>
+      <% }) %>
     </div>
-  <% }) %>
+    <div class="item">
+      <h1>Update developer</h1>
+      <form action="/developers/<%= developer.developer_id %>/update" method="POST">
+        <input type="text" name="developer_name" placeholder="Enter new name" required>
+        <input type="text" placeholder="Enter about developer" name="about" required>
+        <button type="submit"> Update </button>
+      </form>
+      <h1> Add new game </h1>
+      <form action="/developers/<%= developer.developer_id %>/add-game" method="POST">
+        <input type="number" name="game_id" placeholder="Enter game ID" required>
+        <button type="submit"> Add </button>
+      </form>
+      <h1> Delete developer </h1>
+      <form action="/developers/<%= developer.developer_id %>/delete" method="POST">
+        <button type="submit"> Delete </button>
+      </form>
+    </div>
+  </div>
 </body>
 </html>

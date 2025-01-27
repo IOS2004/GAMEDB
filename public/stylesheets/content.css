@@ -1,0 +1,53 @@
+.container 
+{
+  display: flex;
+  padding: 10px 50px;
+  gap: 300px;
+}
+
+.item 
+{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+form 
+{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+form button
+{
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+input
+{
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+a 
+{
+  text-decoration: none;
+  color:chocolate;
+  font-size: 20px;
+  padding: 10px 0px;
+}
+
+h1 
+{
+  color:rgb(205, 47, 47);
+}

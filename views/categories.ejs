@@ -3,13 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="stylesheets/content.css">
   <title>Categories</title>
 </head>
 <body>
-  <% categories.forEach((category) => { %>
-    <div>
-    <a href="/categories/<%= category.name %>"> <%= category.name %> </a>
+  <div class="container">
+    <div class="item">
+    <h1>Categories</h1>
+    <% categories.forEach((category) => { %>
+      <div>
+      <a href="/categories/<%= category.name %>"> <%= category.name %> </a>
+      </div>
+    <% }) %>
     </div>
-  <% }) %>
+    <div class="item">
+      <h1> Add Category </h1>
+      <form action="/categories/create" method="POST">
+        <input type="text" placeholder="Enter category name" name="category_name" required>
+        <button type="submit"> Add Category </button> 
+      </form>
+    </div>
+  </div>
 </body>
 </html>

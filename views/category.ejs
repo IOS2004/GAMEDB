@@ -3,16 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/content.css">
   <title><%= category_name %></title>
 </head>
 <body>
-  <h1> <%= category_name %> </h1>
-  <div>
-  <% games.forEach((game) => { %>
-    <div>
-      <a href="/games/<%= game.game_id %>"> <%= game.name %> </a>
+  <div class="container">
+    <div class="item">
+      <h1> <%= category_name %> </h1>
+      <div>
+      <% games.forEach((game) => { %>
+        <div>
+          <a href="/games/<%= game.game_id %>"> <%= game.name %> </a>
+        </div>
+      <% }) %>
+      </div>
     </div>
-  <% }) %>
+    <div class="item">
+      <h1>Update category</h1>
+      <form action="/categories/<%= category_name %>/update" method="POST">
+        <input type="text" name="category_name" placeholder="Enter new name" required>
+        <button type="submit"> Update </button>
+      </form>
+      <h1> Add new game </h1>
+      <form action="/categories/<%= category_name %>/add-game" method="POST">
+        <input type="number" name="game_id" placeholder="Enter game ID" required>
+        <button type="submit"> Add </button>
+      </form>
+      <h1> Delete category </h1>
+      <form action="/categories/<%= category_name %>/delete" method="POST">
+        <button type="submit"> Delete </button>
+      </form>
+    </div>
   </div>
 </body>
 </html>
