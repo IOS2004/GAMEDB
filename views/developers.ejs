@@ -7,6 +7,7 @@
   <title>Developers</title>
 </head>
 <body>
+  <%- include("partials/header") %>
   <div class="container">
     <div class="item">
       <h1>Developers</h1>
@@ -16,7 +17,7 @@
       </div>
     <% }) %>
     </div>
-    <div class="item">
+    <div class="item inp">
       <h1>Add Developer</h1>
       <form action="/developers/create" method="POST">
         <input type="text" placeholder="Enter developer name" name="developer_name" required>
@@ -26,5 +27,6 @@
       <%- include("partials/errors") %>
     </div>
   </div>
+  <%- include("partials/footer") %>
 </body>
 </html>

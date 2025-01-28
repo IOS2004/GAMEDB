@@ -4,9 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/stylesheets/content.css">
+  <script src="/scripts/admin.js" defer></script>
   <title><%= category_name %></title>
 </head>
 <body>
+  <%- include("partials/header") %>
   <div class="container">
     <div class="item">
       <h1> <%= category_name %> </h1>
@@ -18,7 +20,7 @@
       <% }) %>
       </div>
     </div>
-    <div class="item">
+    <div class="item inp">
       <h1>Update category</h1>
       <form action="/categories/<%= category_name %>/update" method="POST">
         <input type="text" name="category_name" placeholder="Enter new name" required>
@@ -36,5 +38,6 @@
       <%- include("partials/errors") %>
     </div>
   </div>
+  <%- include("partials/footer") %>
 </body>
 </html>

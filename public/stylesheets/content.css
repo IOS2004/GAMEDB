@@ -1,8 +1,19 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column; 
+}
+
+
+
 .container 
 {
   display: flex;
   padding: 10px 50px;
   gap: 300px;
+  padding-bottom: 100px;
 }
 
 .item 
@@ -10,6 +21,10 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.inp {
+  padding: 30px;
 }
 
 form 
@@ -50,4 +65,42 @@ a
 h1 
 {
   color:rgb(205, 47, 47);
+}
+
+footer {
+  padding: 20px;
+  margin: 0px;
+  display: flex;
+  background-color:#0d3b18;
+  text-align: center;
+  justify-content: center;
+  font-family:monospace;
+  font-size: large;
+  align-items: center;
+  margin-top: auto;
+}
+
+header {
+  padding : 10px;
+  padding-top: 0px;
+  margin: 0px;
+  margin-bottom: 10px;
+  background-color: #0d3b18;
+  display: flex;
+  flex-direction: row;
+}
+
+header li {
+  align-self: center;
+  list-style-type: none;
+  padding: 10px;
+}
+header h1 
+{
+  margin-right: 50px;
+}
+
+header a {
+  padding: 0;
+  margin: 0;
 }

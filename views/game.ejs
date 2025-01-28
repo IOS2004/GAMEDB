@@ -4,9 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/stylesheets/content.css">
+  <script src="/scripts/admin.js" defer></script>
   <title><%= game.name %></title>
 </head>
 <body>
+  <%- include("partials/header") %>
   <div class="container">
       <div class="item">
         <h1><%= game.name %></h1>
@@ -25,7 +27,7 @@
           </div>
         <% }) %>
       </div>
-      <div class="item">
+      <div class="item inp">
           <h1>Update game</h1>
           <form action="/games/<%= game.game_id %>/update" method="POST">
             <input type="text" placeholder="Enter name" name="game_name">
@@ -47,5 +49,6 @@
           <%- include("partials/errors") %>
       </div>
   </div>
+  <%- include("partials/footer") %>
 </body>
 </html>

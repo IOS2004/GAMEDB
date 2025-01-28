@@ -4,9 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/stylesheets/content.css">
+  <script src="/scripts/admin.js" defer></script>
   <title><%= developer.name %></title>
 </head>
 <body>
+  <%- include("partials/header") %>
   <div class="container">
     <div class="item">
       <h1> <%= developer.name %> </h1>
@@ -19,7 +21,7 @@
         </div>
       <% }) %>
     </div>
-    <div class="item">
+    <div class="item inp">
       <h1>Update developer</h1>
       <form action="/developers/<%= developer.developer_id %>/update" method="POST">
         <input type="text" name="developer_name" placeholder="Enter new name">
@@ -33,5 +35,6 @@
       <%- include("partials/errors") %>
     </div>
   </div>
+  <%- include("partials/footer") %>
 </body>
 </html>
